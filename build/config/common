@@ -31,12 +31,12 @@ PRESEED =
 
 # The library reducer to use. Set to mklibs (to build with library reduction)
 # or mklibs-copy (to build without library reduction).
-MKLIBS = mklibs
+MKLIBS = mklibs-copy
 
 # Normally the sources.list for building d-i will be derived from your
 # "normal" sources.list. However, you can specify a mirror here to override
 # this. You can use copy:/ to use a local mirror
-#MIRROR = http://www.us.debian.org/debian
+MIRROR = http://depo.pardus.org.tr/etap
 
 # Options to pass to dpkg when it is unpacking the udebs to create the
 # image. None should be needed, but --force-overwrite might need to be
@@ -44,24 +44,27 @@ MKLIBS = mklibs
 DPKG_UNPACK_OPTIONS = --force-overwrite
 
 # The codename of the Debian release that should be installed by default.
-DEBIAN_RELEASE = jessie
+DEBIAN_RELEASE = $(USE_UDEBS_FROM)
 
 # The version (number and codename) of the Debian release targeted by the
 # installation images. (Only the codename is used while the version number
 # has not yet been determined.)
-DEBIAN_VERSION = 8 (jessie)
+DEBIAN_VERSION = 5.2 (stable)
 DEBIAN_VERSION ?= jessie
 
 # Define here from what release (codename!) components (udebs) should be taken
 # to build debian-installer. By default this is set to 'unstable' for building
 # daily images. For official builds this is overruled in debian/rules.
-USE_UDEBS_FROM ?= unstable
+USE_UDEBS_FROM ?= stable
 
 # Archive components from which to fetch debian-installer modules.
 UDEB_COMPONENTS ?= main/debian-installer
 
 # The date the installer is built.
 BUILD_DATE ?= $(shell date -u '+%Y%m%d-%H:%M')
+# The date the installer source was last changed;  we prefer that the
+# caller defines a meaningful value, but below is a safe fallback.
+SOURCE_DATE_EPOCH ?= $(shell date '+%s')
 
 # Produce a beep at boot menu
 BOOTMENU_BEEP ?= n
@@ -87,13 +90,13 @@ TYPE = $(MEDIUM)
 
 # Used to write a /etc/lsb-release file in the installer initrd.
 LSB_DISTRIB_ID=Debian
-LSB_DISTRIB_DESCRIPTION="Debian $(shell uname -o) installer"
+LSB_DISTRIB_DESCRIPTION="Pardus $(shell uname -o) installer"
 # Inlude the build date of the installer in here.
 LSB_DISTRIB_RELEASE="$(DEBIAN_VERSION) - installer build $(BUILD_DATE)"
 
 # This keyring is only used to verify udeb downloads using apt. Since the
 # build process does not run as root, apt cannot read /etc/apt/trusted.gpg.
-KEYRING=/usr/share/keyrings/debian-archive-keyring.gpg
+KEYRING=/usr/share/keyrings/pardus-archive-keyring.gpg
 
 # All images that include cdebconf should include symbols needed by these
 # plugins.
