@@ -1,3 +1,11 @@
+debian-installer (20150422+deb8u5pardus1) stable; urgency=medium
+
+  * Update common and rules for etap
+  * Do not use propesed updates
+  * Pardus CI integration
+
+ -- Yunusemre Şentürk <yunusemre.senturk@pardus.org.tr>  Tue, 16 Oct 2018 10:13:38 +0300
+
 debian-installer (20150422+deb8u5) jessie; urgency=medium
 
   * Bump Linux kernel ABI from 3.16.0-4 to 3.16.0-6
