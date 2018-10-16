@@ -14,7 +14,7 @@ build:
       - mk-build-deps -i -r
       - dpkg-buildpackage -b -uc
       - cd ..
-      - cp  -vt /packages/$(basename $DRONE_REPO) *.udeb *.deb *.changes 2>/dev/null || true
+      - cp  -vt /packages/$(basename $DRONE_REPO) debian-installer-images_* *.udeb *.deb *.changes 2>/dev/null || true
   test:
     image: etap
     volumes:
