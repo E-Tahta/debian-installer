@@ -1,7 +1,13 @@
+debian-installer (20150422+deb8u5pardus2) stable; urgency=medium
+
+  * Update .drone.yml
+
+ -- Yunusemre Şentürk <yunusemre.senturk@pardus.org.tr>  Wed, 17 Oct 2018 13:01:24 +0300
+
 debian-installer (20150422+deb8u5pardus1) stable; urgency=medium
 
   * Update common and rules for etap
-  * Do not use propesed updates
+  * Do not use proposed updates
   * Pardus CI integration
 
  -- Yunusemre Şentürk <yunusemre.senturk@pardus.org.tr>  Tue, 16 Oct 2018 10:13:38 +0300
